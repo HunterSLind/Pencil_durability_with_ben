@@ -24,11 +24,22 @@ describe('writing to paper', () => {
 describe('writing causes degredation', () => {
   it('degrades pencil by 1 when writing an "e"', () => {
     write('e');
-    expect(getDurability()).toBe(9);
+    expect(getDurability()).toBe(12);
   });
 
   it('degrades pencil by 2 when writing an "ee"', () => {
     write('ee');
-    expect(getDurability()).toBe(8);
+    expect(getDurability()).toBe(11);
+  });
+});
+
+describe('Durability is 0', () => {
+  beforeEach(() => {
+    write('eeeeeeeeeeeee');
+  });
+
+  it('writes a space when no durability is left', () => {
+    write('b');
+    expect(paper).toBe('eeeeeeeeeeeee ');
   });
 });

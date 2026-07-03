@@ -1,11 +1,16 @@
 export let paper: string = "";
 
-let durability: number = 10;
+let defaultDurability = 13;
+let durability: number = defaultDurability;
 
 
 export function write(text: string) {
-    paper += text;
-
+    if (durability > 0) {
+        paper += text;
+    }
+    else {
+        paper += " ";
+    }
     durability -= text.length;
 }
 
@@ -28,5 +33,5 @@ export function getDurability(): number {
 
 export function clear() {
     paper = "";
-    durability = 10;
+    durability = defaultDurability;
 }
