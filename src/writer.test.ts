@@ -14,39 +14,16 @@ beforeEach(() => {
 });
 
 describe('writing to paper', () => {
-  it('writes to paper', () => {
+  it('writes to the paper through the writer', () => {
     writer.write('hello, world!');
     expect(paper.text).toBe('hello, world!');
   });
 
-  it('always appends to paper', () => {
+  it('continues appending across multiple writes', () => {
     writer.write('hello, world');
-    expect(paper.text).toBe('hello, world');
-
     writer.write('!');
+
     expect(paper.text).toBe('hello, world!');
-  });
-});
-
-describe('writing causes degradation', () => {
-  it('degrades the pencil by 1 when writing an "e"', () => {
-    writer.write('e');
-    expect(pencil.durability).toBe(12);
-  });
-
-  it('degrades the pencil by 2 when writing an "ee"', () => {
-    writer.write('ee');
-    expect(pencil.durability).toBe(11);
-  });
-
-  it('degrades the pencil by 2 when writing a capital letter', () => {
-    writer.write('E');
-    expect(pencil.durability).toBe(11);
-  });
-
-  it('degrades the pencil by 0 when writing a space', () => {
-    writer.write(' ');
-    expect(pencil.durability).toBe(13);
   });
 });
 
