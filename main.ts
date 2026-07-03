@@ -9,7 +9,9 @@ export function write(text: string) {
         paper += text;
     }
     else {
-        paper += " ";
+        for( let i : number = 0; i < text.length; i++) {
+        paper += " "
+        }
     }
     durability -= text.length;
 }

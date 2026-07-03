@@ -33,13 +33,26 @@ describe('writing causes degredation', () => {
   });
 });
 
-describe('Durability is 0', () => {
-  beforeEach(() => {
-    write('eeeeeeeeeeeee');
+describe('Pencil has no durability', () => {
+  describe('Pencil set to 0 durability', () => {
+    beforeEach(() => {
+      write('eeeeeeeeeeeee');
+    });
+
+    it('writes a space instead of the string', () => {
+      write('b');
+      expect(paper).toBe('eeeeeeeeeeeee ');
+    });
+
+    it('writes many spaces instead of a longer string', () => {
+      write('bb');
+      expect(paper).toBe('eeeeeeeeeeeee  ');
+    });
+  });
+  
+  it('Writes a space when durability would run out', () => {
+    write('eeeeeeeeeeeeebbb');
+    expect(paper).toBe('eeeeeeeeeeeee   ');
   });
 
-  it('writes a space when no durability is left', () => {
-    write('b');
-    expect(paper).toBe('eeeeeeeeeeeee ');
-  });
 });
