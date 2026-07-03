@@ -1,7 +1,8 @@
 import { expect, test } from 'vitest'
-import { helloWorld } from './main'
+import { write, paper } from './main'
 
 
-test('greets the user correctly', () => {
-  expect(helloWorld()).toBe(true)
+test('Writes to paper', () => {
+  write('Hello, world!')
+  expect(paper).toBe('Hello, world!')
 })

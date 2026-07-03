@@ -1,5 +1,6 @@
+export let paper: string = "";
 
 
-export function helloWorld(): boolean {
-    return true;
+export function write(text: string) {
+    paper += text;
 }
