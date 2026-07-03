@@ -5,10 +5,8 @@ let durability: number = 10;
 
 export function write(text: string) {
     paper += text;
-    for (let i: number = 0; i < text.length; i++) {
-        durability -= 1
-    }
-    
+
+    durability -= text.length;
 }
 
 
