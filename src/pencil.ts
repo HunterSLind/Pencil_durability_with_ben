@@ -7,8 +7,11 @@ export class Pencil {
         this.durability = durability;
     };
 
-    canWrite(): boolean {
-        return this.durability > 0;
+    writeOutput(char: string) {
+        if(this.durability > 0) {
+            return char;
+        }
+        return " ";
     }
 
     degradeByCharacter(char: string) {
