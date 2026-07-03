@@ -13,15 +13,8 @@ export class Writer {
 
     write(text: string) {
         for (let i: number = 0; i < text.length; i++) {
-            let letterToWrite = text[i];
-            let charToWrite = 
-
-            if (this.pencil.canWrite()) {
-                this.paper.append(letterToWrite);
-            }
-            else {
-                this.paper.append(" ");
-            }
+            let letterToWrite = this.pencil.writeOutput(text[i]);
+            this.paper.append(letterToWrite);
             this.pencil.degradeByCharacter(letterToWrite);
         }
     }
