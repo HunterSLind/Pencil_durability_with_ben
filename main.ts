@@ -10,7 +10,7 @@ export function write(text: string) {
     }
     else {
         for( let i : number = 0; i < text.length; i++) {
-        paper += " "
+            paper += " "
         }
     }
     durability -= text.length;
