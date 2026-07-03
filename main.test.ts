@@ -31,6 +31,7 @@ describe('writing causes degredation', () => {
     write('ee');
     expect(getDurability()).toBe(11);
   });
+
 });
 
 describe('Pencil has no durability', () => {
@@ -50,9 +51,9 @@ describe('Pencil has no durability', () => {
     });
   });
   
-  // it('Writes a space when durability would run out', () => {
-  //   write('eeeeeeeeeeeeebbb');
-  //   expect(paper).toBe('eeeeeeeeeeeee   ');
-  // });
+  it('Writes a space when durability would run out', () => {
+    write('eeeeeeeeeeeeebbb');
+    expect(paper).toBe('eeeeeeeeeeeee   ');
+  });
 
 });
