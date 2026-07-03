@@ -3,6 +3,9 @@ export let paper: string = "";
 let defaultDurability = 13;
 let durability: number = defaultDurability;
 
+const isAllUpperCase = (str: string): boolean => {
+  return str === str.toUpperCase();
+};
 
 export function write(text: string) {
     for(let i : number = 0; i < text.length; i++ ){
@@ -14,7 +17,16 @@ export function write(text: string) {
         else {
             paper += " ";
         }
-        durability -= 1;
+        if(letterToWrite != " "){
+            if(isAllUpperCase(letterToWrite)){
+                durability -= 2
+            }
+            else{
+                durability -= 1;
+            }
+            
+        }
+        
     }
 }
 

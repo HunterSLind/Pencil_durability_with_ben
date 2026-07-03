@@ -9,15 +9,15 @@ beforeEach(() => {
 
 describe('writing to paper', () => {
   it('Writes to paper', () => {
-    write('Hello, world!');
-    expect(paper).toBe('Hello, world!');
+    write('hello, world!');
+    expect(paper).toBe('hello, world!');
   });
 
   it('Always appends to paper', () => {
-    write('Hello, world');
-    expect(paper).toBe('Hello, world');
+    write('hello, world');
+    expect(paper).toBe('hello, world');
     write('!');
-    expect(paper).toBe('Hello, world!');
+    expect(paper).toBe('hello, world!');
   });
 });
 
@@ -32,6 +32,15 @@ describe('writing causes degredation', () => {
     expect(getDurability()).toBe(11);
   });
 
+  it('degrades pencil by 2 when writing a capital letter', () => {
+    write('E');
+    expect(getDurability()).toBe(11);
+  });
+
+  it('degrades pencil by 0 when writing a space', () => {
+    write(' ');
+    expect(getDurability()).toBe(13);
+  });
 });
 
 describe('Pencil has no durability', () => {
@@ -55,5 +64,4 @@ describe('Pencil has no durability', () => {
     write('eeeeeeeeeeeeebbb');
     expect(paper).toBe('eeeeeeeeeeeee   ');
   });
-
 });
