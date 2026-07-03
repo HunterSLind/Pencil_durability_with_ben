@@ -2,5 +2,5 @@ export let paper: string = "";
 
 
 export function write(text: string) {
-    paper += text;
+    paper = text;
 }
