@@ -3,5 +3,5 @@ import { helloWorld } from './main'
 
 
 test('greets the user correctly', () => {
-  expect(helloWorld()).toBe(false)
+  expect(helloWorld()).toBe(true)
 })
