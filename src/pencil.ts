@@ -27,14 +27,16 @@ export class Pencil {
     }
 
     erase(text: string, textToErase: string) {
-        const result: string = text.replace(textToErase, (match) => " ".repeat(match.length));
+        const index = text.lastIndexOf(textToErase);
+        const spaces = " ".repeat(textToErase.length);
+        const result: string = text.slice(0, index) + spaces;
         return result
     }
 
     degradeByCharacter(char: string) {
         if(char != " "){
             if(isAllUpperCase(char)){
-                this.durability -= 2
+                this.durability -= 2;
             }
             else{
                 this.durability -= 1;

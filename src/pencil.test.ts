@@ -72,4 +72,8 @@ describe('Pencil Eraser Behavior', () => {
         expect(pencil.erase('Woodchuck','chuck')).toBe('Wood     ');
     });
 
+    it('erases the last given instance of text when given mutiple words that are able to be erased', () => {
+        expect(pencil.erase('chuckchuck', 'chuck')).toBe('chuck     ')
+    })
+
 });
