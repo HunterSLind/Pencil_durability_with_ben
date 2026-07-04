@@ -1,10 +1,14 @@
 import { isAllUpperCase } from './util'
 
 export class Pencil {
-    durability: number = 13;
+    defaultDurability: number;
+    durability: number;
+    length: number;
 
-    constructor(durability: number) {
-        this.durability = durability;
+    constructor(defaultDurabilty?: number, length?: number) {
+        this.defaultDurability = defaultDurabilty ?? 40000;
+        this.durability = this.defaultDurability;
+        this.length = length ?? 1;
     };
 
     writeOutput(char: string) {
@@ -12,6 +16,13 @@ export class Pencil {
             return char;
         }
         return " ";
+    }
+    
+    sharpen() {
+        if (this.length > 0) {
+        this.durability = this.defaultDurability;
+        this.length -= 1
+        }
     }
 
     degradeByCharacter(char: string) {
