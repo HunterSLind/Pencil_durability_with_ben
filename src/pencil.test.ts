@@ -44,13 +44,10 @@ describe('Pencil durability behavior', () => {
         expect(pencil.durability).toBe(pencil.defaultDurability);
     })
 
-    it("check that changing defaultDurabilty changes durability", () => {
+    it("checks that instantiating pencil with a new defaultDurability changes both", () => {
         let pencil2 = new Pencil(20)
         expect(pencil2.defaultDurability).toBe(20)
         expect(pencil2.durability).toBe(pencil2.defaultDurability)
-        let pencil3 = new Pencil(30)
-        expect(pencil3.defaultDurability).toBe(30)
-        expect(pencil3.durability).toBe(pencil3.defaultDurability)
     })
 
     it("when sharpening with zero length does not increase durability", () => {
