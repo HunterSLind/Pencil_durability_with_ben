@@ -53,7 +53,7 @@ describe('Pencil durability behavior', () => {
         expect(pencil3.durability).toBe(pencil3.defaultDurability)
     })
 
-    it("when sharpening with zero durability does not increase durability", () => {
+    it("when sharpening with zero length does not increase durability", () => {
         pencil.sharpen()
         pencil.degradeByCharacter("e")
         pencil.sharpen()
