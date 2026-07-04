@@ -39,7 +39,6 @@ export class Pencil {
             spaces = " ".repeat(this.eraser)
             result = text.slice(0, index - this.eraser) + spaces;
         }
-        
         return result;
     }
 
