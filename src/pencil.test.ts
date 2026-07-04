@@ -64,4 +64,12 @@ describe('Pencil durability behavior', () => {
         expect(pencil4.durability).toBe(pencil4.defaultDurability)
         expect(pencil4.length).toBe(1)
     })
+
+});
+
+describe('Pencil Eraser Behavior', () => {
+    it('erases texts and repalces with spaces when given a piece of text', () => {
+        expect(pencil.erase('Woodchuck','chuck')).toBe('Wood     ');
+    });
+
 });

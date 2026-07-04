@@ -4,6 +4,7 @@ export class Pencil {
     defaultDurability: number;
     durability: number;
     length: number;
+    eraser: number = 100;
 
     constructor(defaultDurabilty?: number, length?: number) {
         this.defaultDurability = defaultDurabilty ?? 40000;
@@ -23,6 +24,11 @@ export class Pencil {
         this.durability = this.defaultDurability;
         this.length -= 1
         }
+    }
+
+    erase(text: string, textToErase: string) {
+        const result: string = text.replace(textToErase, (match) => " ".repeat(match.length));
+        return result
     }
 
     degradeByCharacter(char: string) {
