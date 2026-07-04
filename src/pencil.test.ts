@@ -36,11 +36,8 @@ describe('Pencil durability behavior', () => {
 
     it("sharpens the pencil :)", () => {
         pencil.degradeByCharacter("e")
-
         expect(pencil.durability).toBe(12);
-
         pencil.sharpen();
-
         expect(pencil.durability).toBe(pencil.defaultDurability);
     })
 
@@ -75,5 +72,4 @@ describe('Pencil Eraser Behavior', () => {
     it('erases the last given instance of text when given mutiple words that are able to be erased', () => {
         expect(pencil.erase('chuckchuck', 'chuck')).toBe('chuck     ')
     })
-
 });
