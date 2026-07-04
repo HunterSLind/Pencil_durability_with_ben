@@ -4,12 +4,13 @@ export class Pencil {
     defaultDurability: number;
     durability: number;
     length: number;
-    eraser: number = 100;
+    eraser: number;
 
-    constructor(defaultDurabilty?: number, length?: number) {
+    constructor(defaultDurabilty?: number, length?: number, eraser? : number) {
         this.defaultDurability = defaultDurabilty ?? 40000;
         this.durability = this.defaultDurability;
         this.length = length ?? 1;
+        this.eraser = eraser ?? 100;
     };
 
     writeOutput(char: string) {
@@ -27,10 +28,19 @@ export class Pencil {
     }
 
     erase(text: string, textToErase: string) {
-        const index = text.lastIndexOf(textToErase);
-        const spaces = " ".repeat(textToErase.length);
-        const result: string = text.slice(0, index) + spaces;
-        return result
+        let index = text.lastIndexOf(textToErase);;
+        let spaces: string;
+        let result: string;
+        if(textToErase.length < this.eraser) {
+            spaces = " ".repeat(textToErase.length);
+            result = text.slice(0, index) + spaces;
+            this.eraser -= textToErase.length
+        } else {
+            spaces = " ".repeat(this.eraser)
+            result = text.slice(0, index - this.eraser) + spaces;
+        }
+        
+        return result;
     }
 
     degradeByCharacter(char: string) {

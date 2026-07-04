@@ -72,4 +72,14 @@ describe('Pencil Eraser Behavior', () => {
     it('erases the last given instance of text when given mutiple words that are able to be erased', () => {
         expect(pencil.erase('chuckchuck', 'chuck')).toBe('chuck     ')
     })
+
+    it('degrades eraser when using erase method', () => {
+        pencil.erase('chuck','chuck')
+        expect(pencil.eraser).toBe(95)
+    })
+
+    it('doesnt allow erasing after eraser no longer has durability', () => {
+        let eraserPencil = new Pencil(10,10,5)
+        expect(eraserPencil.erase("chucks",'chucks')).toBe('c     ')
+    })
 });
