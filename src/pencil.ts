@@ -1,10 +1,16 @@
 import { isAllUpperCase } from './util'
 
 export class Pencil {
-    durability: number = 13;
+    defaultDurability: number;
+    durability: number;
+    length: number;
+    eraser: number;
 
-    constructor(durability: number) {
-        this.durability = durability;
+    constructor(defaultDurabilty?: number, length?: number, eraser? : number) {
+        this.defaultDurability = defaultDurabilty ?? 40000;
+        this.durability = this.defaultDurability;
+        this.length = length ?? 1;
+        this.eraser = eraser ?? 100;
     };
 
     writeOutput(char: string) {
@@ -13,11 +19,33 @@ export class Pencil {
         }
         return " ";
     }
+    
+    sharpen() {
+        if (this.length > 0) {
+        this.durability = this.defaultDurability;
+        this.length -= 1
+        }
+    }
+
+    erase(text: string, textToErase: string) {
+        let index = text.lastIndexOf(textToErase);;
+        let spaces: string;
+        let result: string;
+        if(textToErase.length < this.eraser) {
+            spaces = " ".repeat(textToErase.length);
+            result = text.slice(0, index) + spaces;
+            this.eraser -= textToErase.length
+        } else {
+            spaces = " ".repeat(this.eraser)
+            result = text.slice(0, index - this.eraser) + spaces;
+        }
+        return result;
+    }
 
     degradeByCharacter(char: string) {
         if(char != " "){
             if(isAllUpperCase(char)){
-                this.durability -= 2
+                this.durability -= 2;
             }
             else{
                 this.durability -= 1;
