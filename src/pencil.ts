@@ -41,6 +41,11 @@ export class Pencil {
         }
         return result;
     }
+    
+    edit(text: string, textToAdd: string) {
+        let index = text.indexOf(" ")
+        return text.slice(0, index + 1) + textToAdd
+    }
 
     degradeByCharacter(char: string) {
         if(char != " "){
