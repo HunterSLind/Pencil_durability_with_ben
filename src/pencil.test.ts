@@ -90,7 +90,7 @@ describe('Pencil Edit Behavior', () => {
     });
 
     it("checks pencil edit to ensure that when replacing whitespace smaller the the word adding it replaces orignial text with @ unless the same character", () =>{
-
+        expect(pencil.edit('Woodchuck Woodchuck    Chuck', 'Woodchuck')).toBe("Woodchuck Woodchuck Wood@huck")
     }) 
 
 });

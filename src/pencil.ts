@@ -43,8 +43,25 @@ export class Pencil {
     }
     
     edit(text: string, textToAdd: string) {
-        let index = text.indexOf(" ")
-        return text.slice(0, index + 1) + textToAdd
+        let index = text.indexOf("  ")
+        let characterTest = text.substring(index).match(/[a-zA-z]/i);
+        let stringToTest = text.slice(index)
+        if (!characterTest) {
+            return text.slice(0, index + 1) + textToAdd
+        } else {
+            let textToAdd2: string[] = [];
+            for(let i: number = 0; i < textToAdd.length; i++) {
+                if(stringToTest[i] == " ") {
+                    textToAdd2[i] = textToAdd[i]
+                } else if (stringToTest[i] == textToAdd[i]) {
+                    textToAdd2[i] = stringToTest[i]
+                } else {
+                    textToAdd2[i] = '@'
+                }
+            }
+            return text.slice(0, index + 1) + textToAdd2.join('')
+        }
+        
     }
 
     degradeByCharacter(char: string) {
