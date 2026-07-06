@@ -42,18 +42,18 @@ export class Pencil {
         return result;
     }
     
-    edit(text: string, textToAdd: string) {
+    edit(text: string, newText: string) {
         const index = text.indexOf("  ");
         const fragment = text.slice(index);
-        return text.slice(0, index + 1) + this.editNewStringToAdd(fragment, textToAdd);
+        return text.slice(0, index + 1) + this.editNewStringToAdd(fragment, newText);
     }
 
-    editNewStringToAdd(originalTextFragment: string, editText: string ) {
-        const maxLen = Math.max(originalTextFragment.length, editText.length);
+    editNewStringToAdd(originalTextFragment: string, newText: string ) {
+        const maxLen = Math.max(originalTextFragment.length, newText.length);
         const newTextArray: string[] = [];
 
         for (let i = 0; i < maxLen; i++) {
-            newTextArray[i] = this.editCharToWrite(originalTextFragment[i], editText[i])
+            newTextArray[i] = this.editCharToWrite(originalTextFragment[i], newText[i])
         }
         return newTextArray.join("")
     }
