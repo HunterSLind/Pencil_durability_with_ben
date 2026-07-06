@@ -44,37 +44,30 @@ export class Pencil {
     
     edit(text: string, textToAdd: string) {
         const index = text.indexOf("  ");
-        const fragment = text.slice(index); // tail starting at the first double-space
+        const fragment = text.slice(index);
+        return text.slice(0, index + 1) + this.editNewStringToAdd(fragment, textToAdd);
+    }
 
-        // if there's no letter in the tail, simply insert the new text at the first space
-        const hasLetter = !!fragment.match(/[a-zA-Z]/);
-        if (!hasLetter) {
-            return text.slice(0, index + 1) + textToAdd;
-        }
-
-        const maxLen = Math.max(fragment.length, textToAdd.length);
-        const replaced: string[] = [];
+    editNewStringToAdd(originalTextFragment: string, editText: string ) {
+        const maxLen = Math.max(originalTextFragment.length, editText.length);
+        const newTextArray: string[] = [];
 
         for (let i = 0; i < maxLen; i++) {
-            const orig = fragment[i] ?? '';
-            const added = textToAdd[i] ?? '';
-
-            if ((orig === ' ' || orig === '') && added !== '') {
-                // write into whitespace (or beyond fragment) when new char exists
-                replaced[i] = added;
-            } else if (added === '') {
-                // no new char to write -> keep original (could be space or a character)
-                replaced[i] = orig;
-            } else if (orig === added) {
-                // same character -> keep it
-                replaced[i] = orig;
-            } else {
-                // collision with a different non-space character -> mark with '@'
-                replaced[i] = '@';
-            }
+            newTextArray[i] = this.editCharToWrite(originalTextFragment[i], editText[i])
         }
+        return newTextArray.join("")
+    }
 
-        return text.slice(0, index + 1) + replaced.join('');
+    editCharToWrite(orginialCharacter: string, newCharacter: string ) {
+        if ((orginialCharacter === ' ' || orginialCharacter === '') && newCharacter !== '') {
+                return newCharacter;
+            } else if (newCharacter === '') {
+                return orginialCharacter;
+            } else if (orginialCharacter === newCharacter) {
+                return orginialCharacter;
+            } else {
+                return '@';
+            }
     }
 
     degradeByCharacter(char: string) {
