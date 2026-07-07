@@ -41,6 +41,34 @@ export class Pencil {
         }
         return result;
     }
+    
+    edit(text: string, newText: string) {
+        const indexOfFirstWhiteSpace = text.indexOf("  ");
+        const fragmentOfTextAfterWhitespace = text.slice(indexOfFirstWhiteSpace);
+        return text.slice(0, indexOfFirstWhiteSpace + 1) + this.editNewStringToAdd(fragmentOfTextAfterWhitespace, newText);
+    }
+
+    editNewStringToAdd(originalTextFragment: string, newText: string ) {
+        const maxLen = Math.max(originalTextFragment.length, newText.length);
+        const newTextArray: string[] = [];
+
+        for (let i = 0; i < maxLen; i++) {
+            newTextArray[i] = this.editCharToWrite(originalTextFragment[i], newText[i])
+        }
+        return newTextArray.join("")
+    }
+
+    editCharToWrite(orginialCharacter: string, newCharacter: string ) {
+        if ((orginialCharacter === ' ' || orginialCharacter === '') && newCharacter !== '') {
+                return newCharacter;
+            } else if (newCharacter === '') {
+                return orginialCharacter;
+            } else if (orginialCharacter === newCharacter) {
+                return orginialCharacter;
+            } else {
+                return '@';
+            }
+    }
 
     degradeByCharacter(char: string) {
         if(char != " "){

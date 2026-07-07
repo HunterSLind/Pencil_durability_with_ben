@@ -83,3 +83,15 @@ describe('Pencil Eraser Behavior', () => {
         expect(eraserPencil.erase("chucks",'chucks')).toBe('c     ')
     })
 });
+
+describe('Pencil Edit Behavior', () => {
+    it('checks when instructed to edit a piece of text it fills in the whitespace with text added  ', () => {
+        expect(pencil.edit("Wood     ", "Wood")).toBe("Wood Wood");
+    });
+
+    it("checks pencil edit to ensure that when replacing whitespace smaller the the word adding it replaces orignial text with @ unless the same character", () =>{
+        expect(pencil.edit('Woodchuck Woodchuck    Chuck', 'Woodchuck')).toBe("Woodchuck Woodchuck Wood@huck")
+    }) 
+
+});
+
