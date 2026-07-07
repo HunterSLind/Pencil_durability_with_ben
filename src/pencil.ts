@@ -43,9 +43,9 @@ export class Pencil {
     }
     
     edit(text: string, newText: string) {
-        const index = text.indexOf("  ");
-        const fragment = text.slice(index);
-        return text.slice(0, index + 1) + this.editNewStringToAdd(fragment, newText);
+        const indexOfFirstWhiteSpace = text.indexOf("  ");
+        const fragmentOfTextAfterWhitespace = text.slice(indexOfFirstWhiteSpace);
+        return text.slice(0, indexOfFirstWhiteSpace + 1) + this.editNewStringToAdd(fragmentOfTextAfterWhitespace, newText);
     }
 
     editNewStringToAdd(originalTextFragment: string, newText: string ) {
